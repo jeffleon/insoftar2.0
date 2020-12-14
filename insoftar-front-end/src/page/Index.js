@@ -18,6 +18,7 @@ const Index_page = () =>{
     if (data){
         return(
             <div className="container-index">
+                <h1>List of Users</h1>
                 <Menu_ users={data}/>
             </div>
         )

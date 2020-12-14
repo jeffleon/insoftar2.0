@@ -17,7 +17,8 @@ const Menu_ = ({users}) => {
                </Table.Row>
             </Table.Header>
             <Table.Body>
-                {users.map((element, index)=>{
+                {users.length?
+                users.map((element, index)=>{
                     return(
                         <Table.Row key={index}>
                             <Table.Cell>{element.nombre}</Table.Cell>
@@ -34,7 +35,7 @@ const Menu_ = ({users}) => {
                             </Table.Cell>
                         </Table.Row>
                     )
-                })}
+                }):null}
             </Table.Body>
             <Table.Footer fullWidth>
                 <Table.Row>
