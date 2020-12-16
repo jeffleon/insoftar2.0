@@ -1,9 +1,11 @@
 import React from 'react';
 import { Field, reduxForm} from 'redux-form';
 import Field_Input from './Field_Input';
-import {Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 const validate = values => {
+    // validations from the form 
     const errors = {}
     if (!values.nombre) {
         errors.nombre = 'Required'
@@ -72,13 +74,27 @@ let Form_ = props => {
   </form>
   )
 }
-
-Form_ = reduxForm({
+const mapStateToProps = (state) => {
+    // initial values brought from reducer user 
+    return {
+      initialValues: {
+        nombre: state.updateUser.nombre,
+        apellido: state.updateUser.apellido,
+        email: state.updateUser.email,
+        telefono: state.updateUser.telefono,
+        cedula: state.updateUser.cedula
+      }
+    }
+  }
+Form_ = connect(mapStateToProps) (reduxForm({
   // a unique name for the form
   form: 'users',
+  // validations
   validate,
   warn,
+  /* enable reinitialize beacause 
+  use in update form a initial values*/
   endableREinitialize: true
-})(Form_)
+})(Form_))
 
 export default Form_

@@ -2,7 +2,11 @@ import React from 'react';
 import { Header, Image, Table, Button, Icon } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
-
+/* 
+    Table menu with the list of users and the 
+    utility to update and delete users
+    pass a list of users with "nombre, apeelido, cedula, telefono, email"  
+*/
 const Menu_ = ({users}) => {
     return(
        <Table called>
@@ -13,6 +17,7 @@ const Menu_ = ({users}) => {
                     <Table.HeaderCell>Cedula</Table.HeaderCell>
                     <Table.HeaderCell>Telefono</Table.HeaderCell>
                     <Table.HeaderCell>Email</Table.HeaderCell>
+                    <Table.HeaderCell/>
                     <Table.HeaderCell/>
                </Table.Row>
             </Table.Header>
@@ -33,13 +38,20 @@ const Menu_ = ({users}) => {
                                     </Button>
                                 </Link>
                             </Table.Cell>
+                            <Table.Cell>
+                                <Link to={`/delete/user/${element.id}`}>
+                                    <Button negative><Icon name="book"/>
+                                        Delete User
+                                    </Button>
+                                </Link>
+                            </Table.Cell>
                         </Table.Row>
                     )
                 }):null}
             </Table.Body>
             <Table.Footer fullWidth>
                 <Table.Row>
-                    <Table.HeaderCell colSpan='6'>
+                    <Table.HeaderCell colSpan='8'>
                         <Link to='/create/user'>
                             <Button
                                 floated='right'

@@ -34,8 +34,8 @@ exports.createUser = async (req, res) => {
 
 exports.getUser = async (req, res) => {
     try{
-        var id = parseInt(req.params.id)
-        var user = User.findByPk(id);
+        var id = parseInt(req.params.id);
+        var user = await User.findByPk(id);
         if (user == null){
             res.status(404).send(`ingrese una id valida id introducida: ${id}`);
         } else {
@@ -70,7 +70,8 @@ exports.updateUser = async (req , res) => {
             const {email, nombre, apellido, telefono, cedula} = req.body;
             // look for a  email if exists,if it does send a error msg if it doesnt exist update the user
             var exists_email = await User.findAll({where: {email: email}});
-            if (!exists_email.length){
+            if (user.email === exists_email[0].email || !exists_email.length)
+            {
                 user.update({ email, nombre, apellido, telefono, cedula})
                 res.status(200).send(user)
             } else{

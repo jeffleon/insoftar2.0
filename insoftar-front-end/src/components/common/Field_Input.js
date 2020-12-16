@@ -2,8 +2,6 @@ import React from 'react';
 import {FormControl} from 'react-bootstrap';
 
 const FieldInput = ({ input,  meta: { touched, error, warning }, type, placeholder, min, max }) => {
-    console.log(error);
-    console.log(touched);
     return (
         <>
             <FormControl

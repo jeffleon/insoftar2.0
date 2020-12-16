@@ -3,7 +3,7 @@ import Menu_ from '../components/common/Menu';
 import useFetch from '../components/hooks/useFetch';
 import './styles/index.css';
 
-
+/* Get a fetch over the list of users and pass this information to MENU component */
 const Index_page = () =>{
     const {data, error, loading} = useFetch('http://localhost:5000/api/users/')
     if (error)
